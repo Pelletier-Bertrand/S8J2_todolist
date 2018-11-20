@@ -1,0 +1,13 @@
+#carousel li {
+  list-style: none;
+}
+#carousel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+#carousel:nth-child(8){
+  height: 100%;
+}

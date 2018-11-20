@@ -1,0 +1,79 @@
+<h1 class="text-center mb-4">Welcome to my todolist app</h1>
+<%= render 'layouts/task_form'  %>
+<div class="container">
+  <ul>
+  <% @categories.each do  |category|%>
+  <li class="tablinks"><button onclick="foncFadeIn(this)" value="<%= category.title  %>"><%= category.title  %></button></li>
+  <div class="card">
+    <ul>
+      <% category.tasks.each do |task|  %>
+      <li id="title_<%=category.title%>">
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Log in</h2>
+      </div>
+      <div class="modal-body">
+          <h2>Log in</h2>
+
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+      </div>
+      
+    </div>
+</div>
+
+
+<div class="container_img">
+  <button class="navigation" id="nav-left" onclick="foncLeft()"><i class="fa fa-angle-left" aria-hidden="true" ></i></button>
+  <div id="carousel">
+  <% n=1 %>
+  
+    <% @tasks.each do |task|  %>
+      <div id="card<%=n%>">
+      
+      <% n+=1 %>
+        <% unless task.image.nil? %>
+          <li><%= image_tag task.image, class: "rounded-circle" %></li>
+        <% end %>
+        
+      </div>
+    <% end %>
+  </div>
+  <button class="navigation" id="nav-right" onclick="foncRight()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+</div>
