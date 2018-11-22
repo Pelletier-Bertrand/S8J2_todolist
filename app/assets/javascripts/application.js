@@ -30,16 +30,26 @@ function foncFadeIn (elem) {
                         ($('li[id^="title"]').siblings().not($("li").siblings("#title_" + title))).fadeOut(0));
 };
 
+//   email 
+ function revele (id) {
+   var email_id = id 
+   $('#email_' + email_id).children().fadeIn(500);
+   $('#email_' + email_id).children().first().children().css("fontSize", 25);
+   $('#email_' + email_id).children().first().children().attr('class', "btn btn-dark");
+ }
+ // fin email
 
 $(document).ready( function() {
+  // email hide body et button
+  $('.email_hide').siblings().fadeOut(0);
   $('#img_avatar').hover(
     function() {
       $('.list-nav').stop().slideDown(200);
     },
     function() {
       $('.list-nav').stop().delay(4000).slideUp(200);
-    }
-  );
+    })
+});
 
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
@@ -56,9 +66,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-
-});
+};
 
 function foncLeft() {
   $("#carousel > :visible").fadeOut(200);

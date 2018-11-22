@@ -1,0 +1,14 @@
+<h2>Emails :</h2>
+<table class="table table-dark">
+    <tr>
+    <th scope="col">Object</th>
+    <th scope="col">Body</th>
+  </tr>
+  <% @emails.each do |m| %>
+  <tr id="email_<%=m.id%>">
+    <td class="email_hide"><button class="btn btn-primary" onclick="revele(<%= m.id %>)"><%= m.object %></button></td>
+    <td><%=m.body%></td>
+    <td><%= link_to 'CLIC POUR DETRUIRE', m, :remote => true, :method => :delete, :class => 'btn btn-danger' %></td>
+  </tr>
+   <% end %>
+</table>

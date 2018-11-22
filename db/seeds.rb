@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+
+30.times do 
+  my_email = Email.create(object: Faker::GameOfThrones.dragon,
+                          body: Faker::GameOfThrones.quote,
+                          read: false)                     
+end
 3.times do
   my_category = Category.create(title: Faker::Book.genre)
   3.times do
@@ -17,3 +23,4 @@ require 'faker'
     my_task.save
   end
 end
+
